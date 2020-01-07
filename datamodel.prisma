@@ -1,0 +1,12 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  posts: [Post!]! @relation(name: "PostsByUser", onDelete: CASCADE)
+}
+
+type Post {
+  id: ID! @id
+  author: User! @relation(name: "PostsByUser")
+  text: String!
+}
